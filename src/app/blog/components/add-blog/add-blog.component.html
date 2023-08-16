@@ -1,0 +1,31 @@
+<div class="container my-5">
+    <form [formGroup]="blogAddForm" (ngSubmit)="addNewBlog()">
+        <div class="mb-3">
+            <label for="inputTitle" class="col-4 col-form-label">Title</label>
+            <div class="col-12">
+                <input type="text" class="form-control" id="inputTitle" placeholder="Title" formControlName="title">
+                <div class="form-text">
+                    <span *ngIf="!blogAddForm.get('title')?.valid&&blogAddForm.get('title')?.touched">
+                        Title is required
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="inputBody" class="col-4 col-form-label">Body</label>
+            <div class="col-12">
+                <input type="text" class="form-control" id="inputBody" placeholder="Body" formControlName="body">
+                <div class="form-text">
+                    <span *ngIf="!blogAddForm.get('body')?.valid&&blogAddForm.get('body')?.touched">
+                        Body is required
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3 ">
+            <div class="float-right">
+                <button type="submit" class="btn btn-primary " [disabled]="!blogAddForm.valid">Add new Blog</button>
+            </div>
+        </div>
+    </form>
+</div>
